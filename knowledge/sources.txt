@@ -1,0 +1,10 @@
+https://gameprogrammingpatterns.com/
+https://gameprogrammingpatterns.com/game-loop.html
+https://www.informit.com/articles/article.aspx?p=2928180&seqNum=4
+https://www.libsdl.org/
+https://www.valvesoftware.com/en/
+https://lazyfoo.net/tutorials/SDL/
+https://www.parallelrealities.co.uk/tutorials/
+https://www.willusher.io/pages/sdl2/
+https://wiki.libsdl.org/SDL3/APIByCategory
+https://en.wikipedia.org/wiki/Sprite_%28computer_graphics%29
