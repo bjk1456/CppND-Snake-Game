@@ -8,3 +8,9 @@ https://www.parallelrealities.co.uk/tutorials/
 https://www.willusher.io/pages/sdl2/
 https://wiki.libsdl.org/SDL3/APIByCategory
 https://en.wikipedia.org/wiki/Sprite_%28computer_graphics%29
+https://wiki.libsdl.org/SDL3/Installation
+https://lazyfoo.net/tutorials/SDL/01_hello_SDL/index.php
+https://www.willusher.io/pages/sdl2/
+https://lazyfoo.net/tutorials/SDL/
+https://www.parallelrealities.co.uk/tutorials/
+

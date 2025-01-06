@@ -16,7 +16,7 @@ class Snake {
 
   void Update();
 
-  void GrowBody();
+  virtual void GrowBody();
   bool SnakeCell(int x, int y);
 
   Direction direction = Direction::kUp;
@@ -28,7 +28,7 @@ class Snake {
   float head_y;
   std::vector<SDL_Point> body;
 
- private:
+ protected:
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
 
