@@ -83,8 +83,8 @@ void Renderer::Render(Garter const garter, Cobra const cobra, SDL_Point const &f
     // Render cobra's head
   block.x = static_cast<int>(cobra.head_x) * block.w;
   block.y = static_cast<int>(cobra.head_y) * block.h;
-  if (garter.alive) {
-    SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF);
+  if (cobra.alive) {
+    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
   } else {
     SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
   }
