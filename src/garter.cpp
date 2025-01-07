@@ -3,5 +3,5 @@
 
 
 
-void Garter::GrowBody() { growing = false; }
+void Garter::GrowBody() { growing = true; }
 

@@ -4,6 +4,7 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : garter(grid_width, grid_height),
+      cobra(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)) {
@@ -23,9 +24,11 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    controller.HandleInput(running, garter);
+    //controller.HandleInput(running, garter, cobra);
+    //controller.HandleInput(running, garter);
+    controller.HandlePredatorInput(running, cobra);
     Update();
-    renderer.Render(garter, food);
+    renderer.Render(garter, cobra, food);
 
     frame_end = SDL_GetTicks();
 
@@ -66,6 +69,7 @@ void Game::PlaceFood() {
 }
 
 void Game::Update() {
+  /** 
   if (!garter.alive) return;
 
   garter.Update();
@@ -80,6 +84,23 @@ void Game::Update() {
     // Grow garter and increase speed.
     garter.GrowBody();
     garter.speed += 0.02;
+  }
+}
+*/
+  if (!cobra.alive) return;
+
+  cobra.Update();
+
+  int new_x = static_cast<int>(cobra.head_x);
+  int new_y = static_cast<int>(cobra.head_y);
+
+  // Check if there's food over here
+  if (food.x == new_x && food.y == new_y) {
+    score++;
+    PlaceFood();
+    // Grow garter and increase speed.
+    cobra.GrowBody();
+    cobra.speed += 0.02;
   }
 }
 

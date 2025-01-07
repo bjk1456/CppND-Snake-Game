@@ -1,12 +1,12 @@
-#ifndef GARTER_H
-#define GARTER_H
+#ifndef COBRA_H
+#define COBRA_H
 
 #include "snake.h"
 
-class Garter : public Snake {
+class Cobra : public Snake {
 
 public:
-  Garter(int grid_width, int grid_height)
+  Cobra(int grid_width, int grid_height)
       : Snake(grid_width, grid_height) {}
 
 
