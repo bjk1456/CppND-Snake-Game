@@ -1,6 +1,7 @@
 #include "garter.h"
+#include "controller.h"
 
 
 
-void Garter::GrowBody() { cout << "Welcome to GFG"; }
+void Garter::GrowBody() { growing = false; }
 
