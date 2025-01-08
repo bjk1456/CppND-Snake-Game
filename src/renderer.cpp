@@ -64,13 +64,13 @@ void Renderer::Render(Garter const garter, Cobra const cobra, SDL_Point const &f
    // Render cobra's body
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
   for (SDL_Point const &point : cobra.body) {
-    block.x = point.x * block.w;
-    block.y = point.y * block.h;
+    block.x = point.x * block.w + 1;
+    block.y = point.y * block.h + 1;
     SDL_RenderFillRect(sdl_renderer, &block);
   }
 
   // Render garter's head
-  /**
+
   block.x = static_cast<int>(garter.head_x) * block.w;
   block.y = static_cast<int>(garter.head_y) * block.h;
   if (garter.alive) {
@@ -78,18 +78,18 @@ void Renderer::Render(Garter const garter, Cobra const cobra, SDL_Point const &f
   } else {
     SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
   }
-  */
+
 
     // Render cobra's head
-  block.x = static_cast<int>(cobra.head_x) * block.w;
-  block.y = static_cast<int>(cobra.head_y) * block.h;
+/**
+  block.x = static_cast<int>(cobra.head_x) * block.w + 1;
+  block.y = static_cast<int>(cobra.head_y) * block.h + 1;
   if (cobra.alive) {
     SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
   } else {
     SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
   }
-
-
+*/
 
   SDL_RenderFillRect(sdl_renderer, &block);
 

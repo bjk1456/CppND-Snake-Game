@@ -4,7 +4,7 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : garter(grid_width, grid_height),
-      cobra(grid_width, grid_height),
+      cobra(grid_width - 1, grid_height - 1),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)) {
@@ -25,8 +25,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     //controller.HandleInput(running, garter, cobra);
-    //controller.HandleInput(running, garter);
-    controller.HandlePredatorInput(running, cobra);
+    controller.HandleInput(running, garter);
+    //controller.HandlePredatorInput(running, cobra);
     Update();
     renderer.Render(garter, cobra, food);
 
@@ -69,7 +69,7 @@ void Game::PlaceFood() {
 }
 
 void Game::Update() {
-  /** 
+
   if (!garter.alive) return;
 
   garter.Update();
@@ -85,17 +85,17 @@ void Game::Update() {
     garter.GrowBody();
     garter.speed += 0.02;
   }
-}
-*/
+
+
   if (!cobra.alive) return;
 
   cobra.Update();
 
-  int new_x = static_cast<int>(cobra.head_x);
-  int new_y = static_cast<int>(cobra.head_y);
+  int new_x_c= static_cast<int>(cobra.head_x);
+  int new_y_c = static_cast<int>(cobra.head_y);
 
   // Check if there's food over here
-  if (food.x == new_x && food.y == new_y) {
+  if (food.x == new_x_c && food.y == new_y_c) {
     score++;
     PlaceFood();
     // Grow garter and increase speed.

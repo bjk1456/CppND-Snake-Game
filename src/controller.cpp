@@ -56,22 +56,22 @@ void Controller::HandlePredatorInput(bool &running, Cobra &cobra) const {
       switch (e.key.keysym.sym) {
         case SDLK_UP:
           HandlePredatorMovement(cobra, Cobra::Direction::kUp,
-                          Cobra::Direction::kUp);
+                          Cobra::Direction::kDown);
           break;
 
         case SDLK_DOWN:
           HandlePredatorMovement(cobra, Cobra::Direction::kDown,
-                          Cobra::Direction::kDown);
+                          Cobra::Direction::kUp);
           break;
 
         case SDLK_LEFT:
           HandlePredatorMovement(cobra, Cobra::Direction::kLeft,
-                          Cobra::Direction::kLeft);
+                          Cobra::Direction::kRight);
           break;
 
         case SDLK_RIGHT:
           HandlePredatorMovement(cobra, Cobra::Direction::kRight,
-                          Cobra::Direction::kRight);
+                          Cobra::Direction::kLeft);
           break;
       }
     }
