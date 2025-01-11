@@ -25,7 +25,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     //controller.HandleInput(running, garter, cobra);
-    controller.HandleInput(running, garter);
+    controller.HandleInput(running, garter, cobra);
     //controller.HandlePredatorInput(running, cobra);
     Update();
     renderer.Render(garter, cobra, food);

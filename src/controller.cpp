@@ -16,7 +16,7 @@ void Controller::HandlePredatorMovement(Cobra &cobra, Cobra::Direction input,
 }
 
 
-void Controller::HandleInput(bool &running, Garter &garter) const {
+void Controller::HandleInput(bool &running, Garter &garter, Cobra &cobra) const {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
@@ -30,6 +30,8 @@ void Controller::HandleInput(bool &running, Garter &garter) const {
 
         case SDLK_DOWN:
           ChangeDirection(garter, Garter::Direction::kDown,
+                          Garter::Direction::kUp);
+          HandlePredatorMovement(cobra, Cobra::Direction::kDown,
                           Garter::Direction::kUp);
           break;
 

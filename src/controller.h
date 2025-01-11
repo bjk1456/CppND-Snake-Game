@@ -6,7 +6,7 @@
 
 class Controller {
  public:
-  void HandleInput(bool &running, Garter &garter) const;
+  void HandleInput(bool &running, Garter &garter, Cobra &cobra) const;
   void HandlePredatorInput(bool &running, Cobra &cobra) const;
 
  private:
