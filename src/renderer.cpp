@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Garter const garter, Cobra const cobra, SDL_Point const &food) {
+void Renderer::Render(Garter const garter, Cobra cobra, SDL_Point const &food) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -52,6 +52,9 @@ void Renderer::Render(Garter const garter, Cobra const cobra, SDL_Point const &f
   block.x = food.x * block.w;
   block.y = food.y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
+  //cobra.CalculateMove(food);
+ 
+  //cobra.food = food;
 
   // Render garter's body
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);

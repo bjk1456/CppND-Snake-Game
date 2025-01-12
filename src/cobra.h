@@ -10,8 +10,10 @@ public:
       : Snake(grid_width, grid_height) {}
 
 
-
+SDL_Point the_food;
 void GrowBody() override;
+void setFoodLoc(SDL_Point food);
+void CalculateMove();
 
 };
 

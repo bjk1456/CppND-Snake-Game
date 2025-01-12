@@ -63,6 +63,7 @@ void Game::PlaceFood() {
     if (!garter.SnakeCell(x, y)) {
       food.x = x;
       food.y = y;
+      cobra.setFoodLoc(food);
       return;
     }
   }
@@ -77,8 +78,29 @@ void Game::Update() {
   int new_x = static_cast<int>(garter.head_x);
   int new_y = static_cast<int>(garter.head_y);
 
+/**
+   std::cout << "new_x ==";
+    std::cout << new_x;
+    std::cout << "\n";
+     std::cout << "new_y ==";
+    std::cout << new_y;
+     std::cout << "\n";
+     */
+
+
+
+
+  
+  
   // Check if there's food over here
   if (food.x == new_x && food.y == new_y) {
+        std::cout << "CHECKING NEW ONES";
+        std::cout << "new_x ==";
+    std::cout << new_x;
+    std::cout << "\n";
+     std::cout << "new_y ==";
+    std::cout << new_y;
+     std::cout << "\n";
     score++;
     PlaceFood();
     // Grow garter and increase speed.

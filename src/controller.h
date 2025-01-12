@@ -13,8 +13,7 @@ class Controller {
   void ChangeDirection(Garter &garter, Garter::Direction input,
                        Garter::Direction opposite) const;
 
-   void HandlePredatorMovement(Cobra &cobra, Cobra::Direction input,
-                       Cobra::Direction opposite) const;
+   void HandlePredatorMovement(Cobra &cobra) const;
 };
 
 #endif
