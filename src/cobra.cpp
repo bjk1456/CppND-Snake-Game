@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-void Cobra::GrowBody() { growing = false; }
+void Cobra::GrowBody() { growing = true; }
 
 void Cobra::setFoodLoc(SDL_Point food) {
     the_food = food;
@@ -21,7 +21,7 @@ void Cobra::CalculateMove() {
 
      int cast_x = static_cast<int>(head_x);
      int cast_y = static_cast<int>(head_y);
- 
+  
      
     std::cout << "head_x ==";
     std::cout << head_x;

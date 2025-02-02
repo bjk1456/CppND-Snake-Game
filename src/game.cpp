@@ -2,7 +2,7 @@
 #include <iostream>
 #include "SDL.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height)
+Game::Game(std::size_t grid_width, std::size_t grid_height, std::vector<std::string> userVars)
     : garter(grid_width, grid_height),
       cobra(grid_width - 1, grid_height - 1),
       engine(dev()),
