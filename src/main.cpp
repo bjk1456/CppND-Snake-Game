@@ -9,8 +9,9 @@
 #include <thread>
 #include <cstring>
 #include <bits/stdc++.h>
+#include <string>
 
-void getVariablesFromFile(const std::string& filename, std::vector<std::string>& arr) {
+void getVariablesFromFile(const std::string& filename, bool &userVarCobraGrowing) {
 
 
 
@@ -28,21 +29,34 @@ void getVariablesFromFile(const std::string& filename, std::vector<std::string>&
         char* nonConstLine = new char[strlen(c_line) + 1];
         strcpy(nonConstLine, c_line);
         char* token = std::strtok(nonConstLine, "=");
+        std::string s_true = "true";
+        std::string s_CobraGrowing = "CobraGrowing";
         int lineNum = 0;
-        int arrayLoc = 0;
-
-
-
-        
+        int arrayLoc = 0;       
        
         while (token != nullptr) {
+          if (strcmp(token, s_CobraGrowing.c_str()) == 0) {
+              std::cout << token << std::endl;
+              std::cout << "ITS A HIT!!!!!!!!!!!!!!:" << std::endl;
+              //std::cout << "userVarCobraGrowing" << std::endl;
+              //std::cout << userVarCobraGrowing << std::endl;
+              token = std::strtok(nullptr, "=");
+              std::cout << "new token is " << std::endl;
+              std::cout << token << std::endl;
+              if (strcmp(token, s_true.c_str()) == 0) {
+                  userVarCobraGrowing = true;
+                  std::cout << "userVarCobraGrowing" << std::endl;
+                  std::cout << userVarCobraGrowing << std::endl;
+              }
+              std::cout << token << std::endl;
+          }
+          
           if(lineNum % 2 == 0){
             std::cout << token << std::endl;
           }
           else{
             std::cout << "ELSE:" << std::endl;
             std::string value(token);
-            arr.push_back(value);
             std::cout << value << std::endl;
           }
         token = std::strtok(nullptr, "="); 
@@ -68,11 +82,11 @@ int main() {
   constexpr std::size_t kGridHeight{32};
   
 
-    std::vector<std::string> userVars;
+    bool userVarCobraGrowing = false;
     std::string filename = "SnakeVars.txt";
 
     // Create a thread to process the file
-    std::thread fileThread(getVariablesFromFile, filename, std::ref(userVars));
+    std::thread fileThread(getVariablesFromFile, filename, std::ref(userVarCobraGrowing));
 
     // Do other work in the main thread...
 
@@ -81,10 +95,7 @@ int main() {
   
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
-  Game game(kGridWidth, kGridHeight, userVars);
+  Game game(kGridWidth, kGridHeight, userVarCobraGrowing);
   game.Run(controller, renderer, kMsPerFrame);
-  std::cout << "Game has terminated successfully!\n";
-  std::cout << "Score: " << game.GetScore() << "\n";
-  std::cout << "Size: " << game.GetSize() << "\n";
   return 0;
 }

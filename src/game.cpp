@@ -2,9 +2,9 @@
 #include <iostream>
 #include "SDL.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height, std::vector<std::string> userVars)
+Game::Game(std::size_t grid_width, std::size_t grid_height, bool userVarCobraGrowing)
     : garter(grid_width, grid_height),
-      cobra(grid_width - 1, grid_height - 1),
+      cobra(grid_width - 1, grid_height - 1, userVarCobraGrowing),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)) {
@@ -77,37 +77,15 @@ void Game::Update() {
 
   int new_x = static_cast<int>(garter.head_x);
   int new_y = static_cast<int>(garter.head_y);
-
-/**
-   std::cout << "new_x ==";
-    std::cout << new_x;
-    std::cout << "\n";
-     std::cout << "new_y ==";
-    std::cout << new_y;
-     std::cout << "\n";
-     */
-
-
-
-
-  
   
   // Check if there's food over here
   if (food.x == new_x && food.y == new_y) {
-        std::cout << "CHECKING NEW ONES";
-        std::cout << "new_x ==";
-    std::cout << new_x;
-    std::cout << "\n";
-     std::cout << "new_y ==";
-    std::cout << new_y;
-     std::cout << "\n";
     score++;
     PlaceFood();
     // Grow garter and increase speed.
     garter.GrowBody();
     garter.speed += 0.02;
   }
-
 
   if (!cobra.alive) return;
 
