@@ -1,6 +1,13 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
+#include <mutex>
+#include <fstream>
+#include <string>
+#include <thread>
+
+std::ofstream log_file("snake_score.txt");
+std::mutex file_mutex;
 
 Game::Game(std::size_t grid_width, std::size_t grid_height, bool userVarCobraGrowing)
     : garter(grid_width, grid_height),
@@ -69,9 +76,24 @@ void Game::PlaceFood() {
   }
 }
 
+void Game::write_score_log(const std::string& message) {
+    std::lock_guard<std::mutex> lock(file_mutex); // Acquire lock
+    log_file << message << std::endl;
+}
+
+void Game::write_function(int score) {
+    Game::write_score_log("The final score for the garter snake is " + std::to_string(score));
+}
+
 void Game::Update() {
 
-  if (!garter.alive) return;
+  if (!garter.alive) {
+    std::thread t1(Game::write_function, score);
+    t1.join();
+
+    log_file.close();
+    return;
+  }
 
   garter.Update();
 

@@ -8,6 +8,7 @@
 #include "garter.h"
 #include "cobra.h"
 #include <iostream>
+#include <string>
 
 class Game {
  public:
@@ -29,7 +30,9 @@ class Game {
 
   int score{0};
 
-  void PlaceFood();
+  void PlaceFood();  
+  void static write_score_log(const std::string& message);
+  void static write_function(int id);
   void Update();
 };
 

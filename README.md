@@ -67,5 +67,5 @@ Each Rubric Point addressed:
 3) Rhe CObra class utilizes a move constructor
 
 *Concurrency
-1) Multithreading is used to read the properties file.
-2) A promise and future is used in main.cpp for the variables exisiting in the properties file.
+1) Inside of game.cpp on line 91 a thread is created that invokes Game::write_function that writes the score to a log file.
+2) Inside of game.cpp on line 79 write_score_log() contains a std::mutex. Before any thread writes to the file, it acquires the lock, performs the write, and then releases the lock. This ensures that only one thread can access the file at a time.
