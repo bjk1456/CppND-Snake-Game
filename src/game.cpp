@@ -27,6 +27,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   int frame_count = 0;
   bool running = true;
 
+  std::thread t1(&Game::write_function, this);
+
   while (running) {
     frame_start = SDL_GetTicks();
 
@@ -58,6 +60,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
       SDL_Delay(target_frame_duration - frame_duration);
     }
   }
+  t1.join();
 }
 
 void Game::PlaceFood() {
@@ -81,19 +84,17 @@ void Game::write_score_log(const std::string& message) {
     log_file << message << std::endl;
 }
 
-void Game::write_function(int score) {
-    Game::write_score_log("The final score for the garter snake is " + std::to_string(score));
+void Game::write_function() {
+    while (true) { 
+      std::cout << "write_function(): " << this->score << std::endl;
+      Game::write_score_log("The final score for the garter snake is " + std::to_string(score));
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  }
 }
 
 void Game::Update() {
 
-  if (!garter.alive) {
-    std::thread t1(Game::write_function, score);
-    t1.join();
-
-    log_file.close();
-    return;
-  }
+  if (!garter.alive) return;
 
   garter.Update();
 
@@ -125,6 +126,7 @@ void Game::Update() {
     cobra.speed += 0.02;
   }
 }
+
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return garter.size; }

@@ -31,8 +31,8 @@ class Game {
   int score{0};
 
   void PlaceFood();  
-  void static write_score_log(const std::string& message);
-  void static write_function(int id);
+  void write_score_log(const std::string& message);
+  void write_function();
   void Update();
 };
 
